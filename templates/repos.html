@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Repos</title>
+    <style>
+      body {
+        background: linear-gradient(45deg, #000000, #1f1f1f, #111, #222);
+        color: white;
+        font-family: "Courier New", monospace;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        transition: background 0.5s ease;
+      }
+      .repo {
+        background: linear-gradient(to right, #8a2be2, #00ff7f);
+        margin: 10px;
+        padding: 15px;
+        border-radius: 10px;
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: background 0.3s;
+      }
+      .repo:hover {
+        background: linear-gradient(to right, #ff6347, #1e90ff);
+      }
+      a {
+        color: #000;
+        padding: 10px;
+        background: #fff;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background 0.3s;
+      }
+      a:hover {
+        background: #ff4500;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Repositories</h1>
+    {% for repo in repos %}
+    <div class="repo">
+      <span>{{ repo.name }}</span>
+      <a href="{{ url_for('pulls', repo=repo.full_name) }}">View Pulls</a>
+    </div>
+    {% endfor %}
+  </body>
+</html>
